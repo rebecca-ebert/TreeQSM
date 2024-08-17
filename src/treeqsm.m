@@ -282,6 +282,7 @@ QSM = struct('cylinder',{},'branch',{},'treedata',{},'rundata',{},...
 %% Reconstruct QSMs
 nmodel = 0;
 for h = 1:nd
+  tStart = tic;
   tic
   Inputs = inputs;
   Inputs.PatchDiam1 = PatchDiam1(h);
@@ -374,6 +375,7 @@ for h = 1:nd
       end
       
       %% Define cylinders
+      tic
       cylinder = cylinders(P,cover2,segment2,Inputs);
       Time(9) = toc;
       if inputs.disp == 2
@@ -442,6 +444,7 @@ for h = 1:nd
         %% Reconstruct the output "QSM"
         Date(2,:) = clock;
         Time(12) = sum(Time(1:11));
+        Time(13) = toc(tStart);
         clear qsm
         qsm = struct('cylinder',{},'branch',{},'treedata',{},'rundata',{},...
           'pmdistance',{},'triangulation',{});
