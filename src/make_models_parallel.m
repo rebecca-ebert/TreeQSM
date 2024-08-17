@@ -177,6 +177,7 @@ for t = 1:nt % trees
   n0 = zeros(Nmodels,1);
   k = ones(Nmodels,1);
   parfor j = 1:Nmodels % generate N models per input
+    disp(['Modelling tree ',num2str(j),'/',num2str(Nmodels),' (',Inputs(t).name,'):'])
     inputs = Inputs(t);
     inputs.model = j;
     while k(j) <= 5 % try up to five times to generate non-empty models
